@@ -1,6 +1,6 @@
 
 // EcmaScript 6
-const Hello = () => 
+const Hello = () =>
   <div>
     <h3>Hello 1</h3>
     <em>I am using the shorthand arrow function syntax.</em>
