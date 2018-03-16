@@ -3,12 +3,13 @@ import {Component} from "react"
 class Game extends Component {
   constructor(props){
     super(props)
+    //create initial state
     this.state = {
       choice: null,
       opponent: null
     }
   }
-
+  //function for setState restart button
   //dont need "bind(this)"
   handleButtonClick = () => {
     this.setState({
@@ -17,15 +18,16 @@ class Game extends Component {
     });
   }
 
-
-  createHandler = choice => (e) => {
+  //this function is confusing ! function createHandler passed the choice as a arguments, re
+  createHandler = choice => e => {
     const opponent =  ['R', 'P', 'S'][Math.floor(3 * Math.random())]
+    //object literal shorthand
     this.setState({
       choice, 
       opponent
     })
   }
-
+//so, what the difference this, with the normal function ?
   getResult() {
     const { choice, opponent } = this.state
     if (choice === opponent){
@@ -57,6 +59,7 @@ class Game extends Component {
         }
         <p>Computer: {opponent} </p>
         <p>Your choice: {choice} </p>
+        {/* without choice it would be throw the first if conclusion which is "same" */}
         <p>Result: {choice && this.getResult()}</p>
         <button type="button" onClick={this.handleButtonClick}>reset</button>
       </div>
